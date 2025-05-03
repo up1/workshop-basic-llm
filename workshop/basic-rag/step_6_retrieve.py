@@ -5,17 +5,21 @@ def retrieve_from_vectordb(query):
     """
     Retrieve documents from the vector database based on the query.
     """
-    # Initialize the ChromaDB client
-    client = chromadb.PersistentClient(path="./db")
+    try:
+        # Initialize the ChromaDB client
+        client = chromadb.PersistentClient(path="./db")
 
-    # Get the collection
-    embedding_function = SentenceTransformerEmbeddingFunction()
-    collection = client.get_collection("microsoft_annual_report_2022", embedding_function=embedding_function)
+        # Get the collection
+        embedding_function = SentenceTransformerEmbeddingFunction()
+        collection = client.get_collection("microsoft_annual_report_2022", embedding_function=embedding_function)
 
-    # Perform the query
-    results = collection.query(query_texts=[query], n_results=5)
+        # Perform the query
+        results = collection.query(query_texts=[query], n_results=5)
 
-    return results['documents'][0]
+        return results['documents'][0]
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        exit(1)
 
 
 if __name__ == "__main__":
