@@ -48,6 +48,14 @@ $python step_5_save_to_vectordb.py
 $python step_6_retrieve.py
 ```
 
+## 9. RAG with OpenAI
+```
+$export TOKENIZERS_PARALLELISM=false
+$export OPENAI_API_KEY=<your api key>
+$python step_7_rag.py
+```
+
+
 ## Reference Websites
 * https://langchain-text-splitter.streamlit.app/
 * [LangChain RAG](https://python.langchain.com/docs/tutorials/rag/)
