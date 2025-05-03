@@ -27,6 +27,11 @@ $python step_1_read_pdf.py
 $python step_2_chunking.py
 ```
 
+## 5. Token spliter
+``` 
+$python step_3_token_split.py
+```
+
 
 
 
