@@ -1,5 +1,7 @@
 # Basic of RAG
 * Read PDF file
+* Chunking
+* Embedding
 
 
 ## 1. Initial Python environment
@@ -24,3 +26,10 @@ $python step_1_read_pdf.py
 ```
 $python step_2_chunking.py
 ```
+
+
+
+
+## Reference Websites
+* https://langchain-text-splitter.streamlit.app/
+* [LangChain RAG](https://python.langchain.com/docs/tutorials/rag/)
