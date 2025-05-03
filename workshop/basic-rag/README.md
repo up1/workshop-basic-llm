@@ -43,7 +43,10 @@ $python step_4_embedding.py
 $python step_5_save_to_vectordb.py
 ```
 
-
+## 8. Retrive data from vector database
+```
+$python step_6_retrieve.py
+```
 
 ## Reference Websites
 * https://langchain-text-splitter.streamlit.app/
