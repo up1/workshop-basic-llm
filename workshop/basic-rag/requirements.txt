@@ -1,3 +1,4 @@
 pypdf
 langchain
 sentence-transformers
+chromadb

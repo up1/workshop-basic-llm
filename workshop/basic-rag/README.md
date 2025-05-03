@@ -2,6 +2,7 @@
 * Read PDF file
 * Chunking
 * Embedding
+* Vector database with [ChromaDB](https://www.trychroma.com/)
 
 
 ## 1. Initial Python environment
@@ -32,6 +33,15 @@ $python step_2_chunking.py
 $python step_3_token_split.py
 ```
 
+## 6. Try to embedding token
+```
+$python step_4_embedding.py
+```
+
+## 7. Save to vector database
+```
+$python step_5_save_to_vectordb.py
+```
 
 
 
