@@ -17,7 +17,7 @@ def get_recommendations(query):
             fts_columns="search_data"
         )
         .rerank(reranker)
-        .limit(5)
+        .limit(10)
         .to_pandas()
     )
     if results.empty:
