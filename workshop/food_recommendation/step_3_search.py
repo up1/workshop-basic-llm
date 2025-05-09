@@ -27,7 +27,6 @@ def get_recommendations(query):
     # Filter out the columns we want to display
     return results[["Food_ID", "Name", "C_Type", "Veg_Non", "Rating", "_relevance_score"]]
 
-
 if __name__ == "__main__":
     # Search the data from vector database
     query = "pizza"

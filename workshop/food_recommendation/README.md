@@ -27,6 +27,9 @@ $python step_1_data_processing.py
 ```
 
 ## 4. Create embedding and save to vector database
+* Try to change Embedding models
+  * Sentence transformer
+  * OpenAI
 ```
 $python step_2_embedding.py
 ```
