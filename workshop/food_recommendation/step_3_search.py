@@ -1,5 +1,5 @@
 import lancedb
-from lancedb.rerankers import RRFReranker
+from lancedb.rerankers import ColbertReranker
 
 def get_recommendations(query):
     # Connect to the LanceDB database
@@ -7,7 +7,7 @@ def get_recommendations(query):
     table = db.open_table("food_recommendations")
 
     # Create a reranker for hybrid search
-    reranker = RRFReranker()
+    reranker = ColbertReranker(column="search_data", query=query, k=10)
 
     results = (
         table.search(
@@ -25,7 +25,7 @@ def get_recommendations(query):
         return None
 
     # Filter out the columns we want to display
-    return results[["Food_ID", "Name", "C_Type", "Rating", "_relevance_score"]]
+    return results[["Food_ID", "Name", "C_Type", "Veg_Non", "Rating", "_relevance_score"]]
 
 
 if __name__ == "__main__":
