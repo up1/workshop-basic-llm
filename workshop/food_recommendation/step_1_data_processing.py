@@ -57,13 +57,15 @@ print(merged_df[["search_data", "Rating", "Rating_str"]].head())
 merged_df["search_data"] = merged_df.apply(
     lambda row: f"{row['search_data']} rating: {row['Rating']} {row['Rating_str']}", axis=1
 )
-# Drop unnecessary columns
-merged_df = merged_df.drop(["User_ID", "Describe", "Rating_str"], axis=1)
 # Save the final preprocessed data
 print("==== Final Preprocessed Data Sample: ====")
 print("Search data:")
 print(merged_df["search_data"][0])
 print(merged_df[["search_data", "Rating"]].head())
+
+# Drop unnecessary columns
+print(merged_df.columns.tolist())
+merged_df = merged_df.drop(["User_ID", "Describe", "Rating_str"], axis=1)
 
 merged_df.to_csv("./data/final_food_data.csv")
 print("Successfully saved the final preprocessed data to ./data/final_food_data.csv")

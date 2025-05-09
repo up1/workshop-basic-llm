@@ -1,4 +1,6 @@
 pandas
 lancedb
+pylance
+pydantic
 tantivy
 rerankers
