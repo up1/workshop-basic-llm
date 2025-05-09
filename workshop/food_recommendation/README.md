@@ -31,3 +31,11 @@ $python step_1_data_processing.py
 $python step_2_embedding.py
 ```
 
+## 5. Search data from vector database
+* [Use hybrid search](https://blog.lancedb.com/hybrid-search-and-custom-reranking-with-lancedb-4c10a6a3447e/)
+  * keyword or full-text search
+  * semantic search (embedding)
+```
+$python step_3_search.py
+```
+

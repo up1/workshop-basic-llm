@@ -10,22 +10,29 @@ print(food.columns.tolist())
 print("Rating Dataset Columns:")
 print(rating.columns.tolist())
 
-# Drop unnecessary columns
-food.dropna(axis=0 ,inplace=True)
-rating.dropna(axis=0 ,inplace=True)
-
 # Merge the datasets
-merged_df = pd.merge(food, rating, on="Food_ID")
+merged_df = pd.merge(rating, food, on="Food_ID", how="inner")
 merged_df.to_csv("./data/merged_df.csv")
 merged_df.head()
-print("Merged Dataset Columns:")
-print(merged_df.columns.tolist())
+
+# Merge same "Food_ID" with different "Raing" by average rating
+merged_df = merged_df.groupby("Food_ID").agg({
+    "Rating": "first",
+    "User_ID": "first",
+    "Name": "first",
+    "C_Type": "first",
+    "Veg_Non": "first",
+    "Describe": "first",
+}).reset_index()
+
 
 # Preprocess the data
 merged_df["search_data"] = merged_df.apply(
     lambda row: f"{row['Name']} {row['C_Type']} {row['Veg_Non']}: {row['Describe']}",
     axis=1,
 )
+print("Merged Dataset Columns:")
+print(merged_df.columns.tolist())
 print("==== Preprocessed Data Sample: ====")
 print(merged_df[["search_data", "Rating"]].head())
 
