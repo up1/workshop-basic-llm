@@ -17,3 +17,8 @@ $python fixed_size_chunking.py
 ```
 $python recursive_chunking.py
 ```
+
+## 4. Semantic chunking
+```
+$python semantic_chunking.py
+```
