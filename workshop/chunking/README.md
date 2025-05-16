@@ -12,3 +12,8 @@ $pip install -r requirements.txt
 ```
 $python fixed_size_chunking.py
 ```
+
+## 3. Recursive chunking
+```
+$python recursive_chunking.py
+```
