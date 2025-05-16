@@ -18,7 +18,12 @@ $python fixed_size_chunking.py
 $python recursive_chunking.py
 ```
 
-## 4. Semantic chunking
+## 4. Docuement chunking
+```
+$python document_chunking.py
+```
+
+## 5. Semantic chunking
 ```
 $python semantic_chunking.py
 ```
