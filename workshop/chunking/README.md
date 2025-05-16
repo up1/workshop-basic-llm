@@ -27,3 +27,8 @@ $python document_chunking.py
 ```
 $python semantic_chunking.py
 ```
+
+## 6. Agentic chunking
+```
+$python agentic_chunking.py
+```
