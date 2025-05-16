@@ -61,7 +61,7 @@ $python step_8_visualize.py
 ```
 
 
-
 ## Reference Websites
 * https://langchain-text-splitter.streamlit.app/
 * [LangChain RAG](https://python.langchain.com/docs/tutorials/rag/)
+* [RAGxplorer](https://github.com/gabrielchua/RAGxplorer)
