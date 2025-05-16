@@ -13,21 +13,29 @@ def retrieve_from_vectordb(query):
         embedding_function = SentenceTransformerEmbeddingFunction()
         collection = client.get_collection("microsoft_annual_report_2022", embedding_function=embedding_function)
 
-        # Perform the query
-        results = collection.query(query_texts=[query], n_results=5)
+        # query with scores and sort by distance
+        results = collection.query(query_texts=[query], n_results=5, include=["documents", "metadatas", "distances"])
 
-        return results['documents'][0]
+        # Merge results['documents'][0] with results['distances'][0]
+        merged_results = {
+            "documents": results['documents'][0],
+            "distances": results['distances'][0]
+        }
+
+        return merged_results
     except Exception as e:
         print(f"An error occurred: {e}")
         exit(1)
 
 
 if __name__ == "__main__":
-    query = "Your search query here"
-    retrieved_documents = retrieve_from_vectordb(query)
+    query = "What was the total revenue?"
+    results = retrieve_from_vectordb(query)
 
-    for document in retrieved_documents:
+    for document, distance in zip(results['documents'], results['distances']):
         print("======================")
         print("Retrieved Document:")
         print(document)
+        print("Distance:")
+        print(distance)
         print('\n')
