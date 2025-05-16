@@ -59,7 +59,11 @@ $python step_7_rag.py
 ```
 $python step_8_visualize.py
 ```
-
+## 11. Re-rank and visualize
+```
+$python step_9_rerank.py
+$python step_10_rerank_visualize.py
+```
 
 ## Reference Websites
 * https://langchain-text-splitter.streamlit.app/
