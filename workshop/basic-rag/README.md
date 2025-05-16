@@ -55,6 +55,12 @@ $export OPENAI_API_KEY=<your api key>
 $python step_7_rag.py
 ```
 
+## 10. Visualize search results from vector database
+```
+$python step_8_visualize.py
+```
+
+
 
 ## Reference Websites
 * https://langchain-text-splitter.streamlit.app/

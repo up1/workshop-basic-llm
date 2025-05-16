@@ -3,3 +3,5 @@ langchain
 sentence-transformers
 chromadb
 openai
+matplotlib
+umap-learn
