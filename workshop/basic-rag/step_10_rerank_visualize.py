@@ -21,7 +21,7 @@ def retrieve_from_vectordb(query):
         collection = client.get_collection("microsoft_annual_report_2022", embedding_function=embedding_function)
 
         # query with scores and sort by distance
-        results = collection.query(query_texts=[query], n_results=10, include=["documents", "metadatas", "distances", "embeddings"])
+        results = collection.query(query_texts=[query], n_results=3, include=["documents", "metadatas", "distances", "embeddings"])
         retrieved_documents = results['documents'][0]
         retrieved_embeddings = results['embeddings'][0]
 

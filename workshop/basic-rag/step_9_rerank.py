@@ -15,8 +15,12 @@ def retrieve_from_vectordb(query):
         collection = client.get_collection("microsoft_annual_report_2022", embedding_function=embedding_function)
 
         # query with scores and sort by distance
-        results = collection.query(query_texts=[query], n_results=10, include=["documents", "metadatas", "distances"])
+        results = collection.query(query_texts=[query], n_results=3, include=["documents", "metadatas", "distances"])
         retrieved_documents = results['documents'][0]
+        print("Retrieved documents:")
+        for doc in retrieved_documents:
+            print(doc)
+            print('\n')
 
         # Rerank the results using a CrossEncoder
         cross_encoder = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-12-v2')

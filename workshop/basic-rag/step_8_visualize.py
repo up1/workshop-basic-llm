@@ -18,7 +18,7 @@ def retrieve_from_vectordb(query):
         # Get the collection
         embedding_function = SentenceTransformerEmbeddingFunction()
         collection = client.get_collection("microsoft_annual_report_2022", embedding_function=embedding_function)
-        results = collection.query(query_texts=query, n_results=5, include=['documents', 'embeddings'])
+        results = collection.query(query_texts=query, n_results=4, include=['documents', 'embeddings'])
 
         # Get the embeddings for the entire collection
         embeddings = collection.get(include=['embeddings'])['embeddings']
