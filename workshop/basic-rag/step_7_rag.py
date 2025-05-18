@@ -27,7 +27,17 @@ if __name__ == "__main__":
 
     # Retrieve documents from the database
     docs = retrieve_from_vectordb(query)
+    # join the documents and distances into a single string
+
+    print("Retrieved Documents:")
+    for document, distance in zip(docs['documents'], docs['distances']):
+        print("======================")
+        print("Retrieved Document:")
+        print(document)
+        print("Distance:")
+        print(distance)
+        print('\n')
     
     # Use RAG to answer the question
-    answer = rag(query, docs)
+    answer = rag(query, docs['documents'])
     print(answer)
