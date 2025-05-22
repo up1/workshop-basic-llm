@@ -61,14 +61,18 @@ def rerank_results(query, results):
 
     # Sort by score
     reranked_results.sort(key=lambda x: x[3], reverse=True)
+
+    # Close the cursor and connection
+    cur.close()
+    conn.close()
     
     return reranked_results
 
-if __name__ == "__main__":
-    # Connect to the database
-    conn = connect_db()
-    cur = conn.cursor()
+# Connect to the database
+conn = connect_db()
+cur = conn.cursor()
 
+if __name__ == "__main__":
     # Example query
     question = "sunny today"
 
