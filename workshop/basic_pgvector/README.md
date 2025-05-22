@@ -13,18 +13,23 @@ $pip install -r requirements.txt
 
 ## 3. Create embedding for existing data
 * Use OpenAI's Embedding
+* Generate vector from existing data
 ```
 $python step_1_embedding.py
 ```
 
-## 4. Search data from database
+## 4. Retrieve data from database
+* Keywork search
+* Semantic search
+* Hybrid search
+
 ```
-$python step_2_query.py
+$python step_2_retriever.py
 ```
 
 | Operators    | Distance Function |
 | -------- | ------- |
-| <->  | L2 Distance|
+| <->  | L2 Distance (Euclidean distance)|
 | <=>  | Negative inner product|
 | <#>  | Cosine distance|
-| <+>  | L1 Distance|
+| <+>  | L1 Distance (Manhattan distance)|
