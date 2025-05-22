@@ -33,3 +33,10 @@ $python step_2_retriever.py
 | <=>  | Negative inner product|
 | <#>  | Cosine distance|
 | <+>  | L1 Distance (Manhattan distance)|
+
+## 5. Re-ranking results
+* Cross-encoder
+
+```
+$python step_3_rerank.py
+```
