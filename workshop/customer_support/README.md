@@ -20,6 +20,7 @@ Open code in file `fake_database.py`
 ## 3. Declare tools in Functions calling pattern
 * Open code in file `tools.py`
 
-
-### References
-* https://mrmaheshrajput.medium.com/build-a-customer-support-assistant-with-llama3-1-7bf60611e428
+## 4. Chat ...
+```
+$python customer_support.py
+```
