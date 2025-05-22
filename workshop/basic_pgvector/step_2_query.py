@@ -9,7 +9,7 @@ def get_embedding(text):
     response = openai.Client().embeddings.create(input=text, model="text-embedding-ada-002")
     return response.data[0].embedding
 
-def search_documents(query, limit=5):
+def semantic_search(query, limit=5):
     query_embedding = get_embedding(query)
     cur.execute("""
         SELECT a.id, a.title, b.embedding <-> %s::vector AS distance
@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     # Example query
     question = "sunny"
-    results = search_documents(question)
+    results = semantic_search(question)
 
     # Print results
     for doc_id, title, distance in results:
