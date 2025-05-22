@@ -21,3 +21,10 @@ $python step_1_embedding.py
 ```
 $python step_2_query.py
 ```
+
+| Operators    | Distance Function |
+| -------- | ------- |
+| <->  | L2 Distance|
+| <=>  | Negative inner product|
+| <#>  | Cosine distance|
+| <+>  | L1 Distance|
