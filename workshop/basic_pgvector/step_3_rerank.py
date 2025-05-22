@@ -46,7 +46,7 @@ def hybrid_search(query):
     combined_search.sort(key=lambda x: x[2])
     return combined_search
 
-def rerank_results(query, results):
+def rerank_results(query, results, limit=3):
     # Load the cross-encoder model
     model = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
 
@@ -59,8 +59,12 @@ def rerank_results(query, results):
     # Combine scores with results
     reranked_results = [(doc_id, title, distance, score) for (doc_id, title, distance), score in zip(results, scores)]
 
+    # filter out results with low scores
+    reranked_results = [result for result in reranked_results if result[3] > 0.3]
+
     # Sort by score
     reranked_results.sort(key=lambda x: x[3], reverse=True)
+    reranked_results = reranked_results[:limit]
 
     # Close the cursor and connection
     cur.close()
@@ -74,7 +78,7 @@ cur = conn.cursor()
 
 if __name__ == "__main__":
     # Example query
-    question = "sunny today"
+    question = "tv"
 
     # 1. Keyword search example
     keyword_results = keyword_search(question)

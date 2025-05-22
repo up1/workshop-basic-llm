@@ -40,3 +40,11 @@ $python step_2_retriever.py
 ```
 $python step_3_rerank.py
 ```
+
+## 6. RAG Pipeline
+* Working with OpenAI
+
+```
+$python step_4_rag.py
+```
+
