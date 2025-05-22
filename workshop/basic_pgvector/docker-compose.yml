@@ -1,0 +1,11 @@
+services:
+  db:
+    image: pgvector/pgvector:0.8.0-pg17
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=user01
+      - POSTGRES_PASSWORD=password01
+      - POSTGRES_DB=demo_pgvector
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
