@@ -51,7 +51,7 @@ if __name__ == "__main__":
     cur = conn.cursor()
 
     # Example query
-    question = "sunny today"
+    question = "tv abc"
 
     # 1. Keyword search example
     keyword_results = keyword_search(question)
