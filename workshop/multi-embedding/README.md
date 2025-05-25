@@ -35,13 +35,17 @@ $python3.12 step_1_connect_db.py
 $python3.12 step_2_create_db.py
 ```
 
+## 6. Add data for test
+```
+$python3.12 step_3_add_data.py
+```
 
-
-
-
-
-
+## 7. Try to search data
+```
+$python3.12 step_4_search.py
+```
 
 ### Reference Websites
 * https://huggingface.co/lightonai/Reason-ModernColBERT
 * https://weaviate.io/developers/weaviate/tutorials/multi-vector-embeddings
+* https://github.com/weaviate/recipes/tree/main/weaviate-features/multi-vector
