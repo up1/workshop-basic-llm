@@ -36,11 +36,18 @@ def create_database(client):
     )
     print(f"Collection '{collection_name}' created successfully.")
 
+def get_collection(client):
+    # Get collection
+    if not client.collections.exists(collection_name):
+        raise ValueError(f"Collection '{collection_name}' does not exist.")
+    return client.collections.get(collection_name)
+
 def print_collection_info(client):
     # Get collection
-    collection = client.collections.get(collection_name)
+    collection = get_collection(client)
     config = collection.config.get().vector_config['multi_vector'].vector_index_config
     print(json.dumps(config.__dict__, indent=2, default=lambda o: o.__dict__ if hasattr(o, '__dict__') else str(o)))
+
 
 
 
