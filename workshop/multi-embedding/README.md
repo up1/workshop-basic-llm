@@ -30,6 +30,11 @@ CONTAINER ID   IMAGE                                             COMMAND        
 $python3.12 step_1_connect_db.py
 ```
 
+## 5. Create collection with multi-vector embedding in database
+```
+$python3.12 step_2_create_db.py
+```
+
 
 
 
