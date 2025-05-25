@@ -1,0 +1,4 @@
+voyager==2.0.9
+pylate
+weaviate-client
+sentence-transformers
