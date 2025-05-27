@@ -51,7 +51,8 @@ def ingest_logs():
                                               mongodb_client  = MONGODB_CLIENT,
                                               db_name         = MONGODB_DBNAME,
                                               collection_name = 'logs_collection',
-                                              index_name      = 'logs_idx'),
+                                              vector_index_name='logs_vector_idx',
+                                              fulltext_index_name='logs_fts_idx'),
                         cache             = MONGODB_CACHE,
                         docstore          = MONGODB_DOCSTORE,
                         docstore_strategy = DocstoreStrategy.UPSERTS,
@@ -64,16 +65,19 @@ def ingest_devguide():
   print('->Ingest Dev Guide')
   start         = time.time()
   documents     = PDFReader().load_data(file=SPRINGBOOT_GUIDE_PDF)
+  # create index in pipeline
   pipeline      = IngestionPipeline(
                         transformations   = [EMBEDDINGS], 
                         vector_store      = MongoDBAtlasVectorSearch(
                                               mongodb_client  = MONGODB_CLIENT,
                                               db_name         = MONGODB_DBNAME,
                                               collection_name = 'devguide_collection',
-                                              index_name      = 'devguide_idx'),
+                                              vector_index_name='devguide_vector_idx',
+                                              fulltext_index_name='devguide_fts_idx'),
                         cache             = MONGODB_CACHE,
                         docstore          = MONGODB_DOCSTORE,
                         docstore_strategy = DocstoreStrategy.UPSERTS,
+
                   )
   nodes         = pipeline.run(documents = documents)
   end           = time.time()
@@ -82,4 +86,27 @@ def ingest_devguide():
 ingest_logs()
 ingest_devguide()
 
-print('Manually create atlas vector search index:','logs_idx','code_idx','devguide_idx')
+# create vector search indices manually
+print('->Create Vector Search Indices')
+len = len(EMBEDDINGS.get_text_embedding("hello"))
+logs_vector_idx = MongoDBAtlasVectorSearch(
+    mongodb_client  = MONGODB_CLIENT,
+    db_name         = MONGODB_DBNAME,
+    collection_name = 'logs_collection',
+    vector_index_name='logs_vector_idx',
+    fulltext_index_name='logs_fts_idx')
+devguide_vector_idx = MongoDBAtlasVectorSearch(
+    mongodb_client  = MONGODB_CLIENT,
+    db_name         = MONGODB_DBNAME,
+    collection_name = 'devguide_collection',
+    vector_index_name='devguide_vector_idx',
+    fulltext_index_name='devguide_fts_idx')
+logs_vector_idx.create_vector_search_index(dimensions=len, path='logs_vector_idx', similarity='cosine')
+logs_vector_idx.create_fulltext_search_index(field='text')
+devguide_vector_idx.create_vector_search_index(dimensions=len, path='devguide_vector_idx', similarity='cosine')
+devguide_vector_idx.create_fulltext_search_index(field='text')
+print('->Done')
+print('->Data Ingestion Completed')
+
+print('Create atlas vector search index:','logs_vector_idx','logs_fts_idx')
+print('Create atlas vector search index:','devguide_vector_idx','devguide_fts_idx')
