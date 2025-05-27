@@ -101,9 +101,9 @@ devguide_vector_idx = MongoDBAtlasVectorSearch(
     collection_name = 'devguide_collection',
     vector_index_name='devguide_vector_idx',
     fulltext_index_name='devguide_fts_idx')
-logs_vector_idx.create_vector_search_index(dimensions=len, path='logs_vector_idx', similarity='cosine')
+logs_vector_idx.create_vector_search_index(dimensions=len, path='embedding', similarity='cosine')
 logs_vector_idx.create_fulltext_search_index(field='text')
-devguide_vector_idx.create_vector_search_index(dimensions=len, path='devguide_vector_idx', similarity='cosine')
+devguide_vector_idx.create_vector_search_index(dimensions=len, path='embedding', similarity='cosine')
 devguide_vector_idx.create_fulltext_search_index(field='text')
 print('->Done')
 print('->Data Ingestion Completed')
