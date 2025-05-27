@@ -3,7 +3,6 @@ pymongo
 transformers
 llama-index-core
 llama-index-readers-file
-llama-index-readers-github
 llama-index-embeddings-huggingface
 llama-index-embeddings-instructor
 llama-index-storage-kvstore-mongodb
