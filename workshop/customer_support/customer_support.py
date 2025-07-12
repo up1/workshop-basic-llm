@@ -32,9 +32,10 @@ def chat():
     If you do not have enough information to use a tool correctly, ask a user follow up questions to get the required inputs.
     Do not call any of the tools unless you have the required data from a user. 
     """
+    messages = [{"role": "system", "content": [{"type": "text", "text": system_prompt}]}]
     # Initial user message
     user_message = input("\nUser: ")
-    messages = [{"role": "user", "content": [{"type": "text", "text": user_message}]}]
+    messages.append({"role": "user", "content": [{"type": "text", "text": user_message}]})
 
     while True:
         # If the last message is from the assistant, get another input from the user
