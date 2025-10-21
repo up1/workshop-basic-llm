@@ -25,7 +25,7 @@ def process_tool_call(tool_name: str, tool_input: Any) -> Any:
 
 def chat():
     system_prompt = """
-    You are a customer support chat bot for an online retailer called NTL. 
+    You are a customer support chat bot for an online retailer called ABC. 
     Your job is to help users look up their account, orders, and cancel orders.
     Be helpful and brief in your responses.
     You have access to a set of tools, but only use them when needed.  
@@ -90,7 +90,7 @@ def chat():
             )
         else:
             print(
-                "\nNTL Assistant Support:"
+                "\nABC Assistant Support:"
                 + f"{result}"
             )
 
