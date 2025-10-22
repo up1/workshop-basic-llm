@@ -1,6 +1,6 @@
 from step_1_read_pdf import read_pdf
 from step_2_chunking import chunk_text
-from langchain.text_splitter import SentenceTransformersTokenTextSplitter
+from langchain_text_splitters.sentence_transformers import SentenceTransformersTokenTextSplitter
 
 def token_spliter(texts):
     token_splitter = SentenceTransformersTokenTextSplitter(chunk_overlap=0, tokens_per_chunk=256)
