@@ -1,6 +1,5 @@
 from step_1_read_pdf import read_pdf
-from helper_utils import word_wrap
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 def chunk_text(texts):
