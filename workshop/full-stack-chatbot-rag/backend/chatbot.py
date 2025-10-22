@@ -4,9 +4,9 @@ import logging
 import os
 
 from dotenv import find_dotenv, load_dotenv
-from langchain.chains import create_retrieval_chain
-from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain.prompts import ChatPromptTemplate
+from langchain_classic.chains import create_retrieval_chain
+from langchain_classic.chains.combine_documents.stuff import create_stuff_documents_chain
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_chroma import Chroma
 from langchain_community.document_loaders.blob_loaders import Blob
 from langchain_community.document_loaders.parsers import PyPDFParser
