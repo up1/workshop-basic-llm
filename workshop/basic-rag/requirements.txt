@@ -1,5 +1,6 @@
 pypdf
 langchain
+langchain_text_splitters
 sentence-transformers
 chromadb
 openai
