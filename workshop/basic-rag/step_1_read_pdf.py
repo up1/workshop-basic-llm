@@ -1,4 +1,3 @@
-from helper_utils import word_wrap
 from pypdf import PdfReader
 
 
@@ -15,5 +14,5 @@ def read_pdf(file_path):
 if __name__ == "__main__":
     texts = read_pdf("./data/microsoft_annual_report_2022.pdf")
     # Print the first text
-    print(word_wrap(texts[0]))
+    print(texts[0])
     
