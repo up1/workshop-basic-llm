@@ -4,3 +4,4 @@ pylance
 pydantic
 tantivy
 rerankers
+openai
