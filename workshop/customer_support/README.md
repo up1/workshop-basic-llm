@@ -22,5 +22,18 @@ Open code in file `fake_database.py`
 
 ## 4. Chat ...
 ```
+$export OPENAI_API_KEY=your-key
 $python customer_support.py
+```
+
+
+## 5. Working with [MCP(Model Context Protocol)](https://modelcontextprotocol.io/docs/getting-started/intro)
+* [FastMCP](https://gofastmcp.com/)
+
+```
+$pip install -r requirements.txt
+
+$export OPENAI_API_KEY=your-key
+
+$python python mcp_client.py
 ```
