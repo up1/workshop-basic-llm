@@ -37,3 +37,20 @@ $export OPENAI_API_KEY=your-key
 
 $python python mcp_client.py
 ```
+
+### Config MCP in VS Code
+* `.vscode/mcp.json`
+```
+{
+  "servers": {
+    "Demo Customer Support": {
+      "type": "stdio",
+      "command": "python",
+      "args": [
+        "mcp_server.py"
+      ]
+    }
+  }
+}
+```
+
