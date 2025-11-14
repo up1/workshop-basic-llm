@@ -3,5 +3,4 @@ lancedb
 pylance
 pydantic
 tantivy
-rerankers
 openai

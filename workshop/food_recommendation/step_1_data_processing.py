@@ -25,6 +25,9 @@ merged_df = merged_df.groupby("Food_ID").agg({
     "Describe": "first",
 }).reset_index()
 
+# Change value of non-veg to "non-vegetarian"
+merged_df["Veg_Non"] = merged_df["Veg_Non"].replace({"non-veg": "non-vegetarian", "veg": "vegetarian"})
+
 
 # Preprocess the data
 merged_df["search_data"] = merged_df.apply(
@@ -37,19 +40,19 @@ print("==== Preprocessed Data Sample: ====")
 print(merged_df[["search_data", "Rating"]].head())
 
 # Improve accuracy by mapping
-# Create a mapping from numbers to strings
+# Create a mapping from numbers to strings with range 0-10
 num_to_string = {
-    0.0: "zero",
-    1.0: "one",
-    2.0: "two",
-    3.0: "three",
-    4.0: "four",
-    5.0: "five",
-    6.0: "six",
-    7.0: "seven",
-    8.0: "eight",
-    9.0: "nine",
-    10.0: "ten",
+    0: "bad",
+    1: "bad",
+    2: "bad",
+    3: "bad",
+    4: "bad",
+    5: "normal",
+    6: "good",
+    7: "good",
+    8: "good",
+    9: "good",
+    10: "good",
 }
 # Replace numerical ratings with their string equivalents
 merged_df["Rating_str"] = merged_df["Rating"].map(num_to_string)
@@ -62,7 +65,7 @@ print(merged_df[["search_data", "Rating", "Rating_str"]].head())
 
 # Add new column for search and embedding
 merged_df["search_data"] = merged_df.apply(
-    lambda row: f"{row['search_data']} rating: {row['Rating']} {row['Rating_str']}", axis=1
+    lambda row: f"{row['search_data']} ,review is {row['Rating_str']}", axis=1
 )
 # Save the final preprocessed data
 print("==== Final Preprocessed Data Sample: ====")

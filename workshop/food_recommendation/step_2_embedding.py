@@ -5,8 +5,8 @@ import pandas as pd
 
 # Hugging Face sentence transformer embeddings
 registry = EmbeddingFunctionRegistry.get_instance()
-func = registry.get("sentence-transformers").create(model_name="all-MiniLM-L6-v2")
-# func = get_registry().get("openai").create(name="text-embedding-3-large")
+# func = registry.get("sentence-transformers").create(model_name="all-MiniLM-L6-v2")
+func = get_registry().get("openai").create(name="text-embedding-3-large")
 
 class FoodSearch(LanceModel):
     search_data: str = func.SourceField()  # Text column is combinations of all columns
@@ -17,19 +17,6 @@ class FoodSearch(LanceModel):
     Veg_Non: str = func.SourceField()  # type of food its veg or non-veg
     vector: Vector(func.ndims()) = func.VectorField() # embedding vector
 
-import time
-def wait_for_index(table, index_name):
-    POLL_INTERVAL = 10
-    while True:
-        indices = table.list_indices()
-        print(f"Indices: {indices}")
-
-        if indices and any(index.name == index_name for index in indices):
-            break
-        print(f"⏳ Waiting for {index_name} to be ready...")
-        time.sleep(POLL_INTERVAL)
-
-    print(f"✅ {index_name} is ready!")
 
 def create_table(food_data):
     # Create a LanceDB database
@@ -40,7 +27,8 @@ def create_table(food_data):
     table.add(data=food_data)
 
     # Full text search support
-    table.create_fts_index("search_data", replace=True)
+    table.create_fts_index("search_data")
+    table.wait_for_index(["search_data_idx"])
 
 if __name__ == "__main__":
     # Load the data

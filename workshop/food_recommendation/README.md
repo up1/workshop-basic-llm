@@ -31,6 +31,7 @@ $python step_1_data_processing.py
   * Sentence transformer
   * OpenAI
 ```
+$export OPENAI_API_KEY=your-key
 $python step_2_embedding.py
 ```
 
@@ -39,6 +40,8 @@ $python step_2_embedding.py
   * keyword or full-text search
   * semantic search (embedding)
 ```
+$pip install "rerankers[transformers]"
+
 $python step_3_search.py
 ```
 
