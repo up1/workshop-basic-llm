@@ -1,6 +1,5 @@
 import lancedb
 from lancedb.embeddings import get_registry
-from lancedb.rerankers import ColbertReranker
 
 def get_recommendations(query):
     # Set embedding-based search openai text-embedding-3-large
@@ -10,7 +9,7 @@ def get_recommendations(query):
     db = lancedb.connect("./lancedb/foods")
     table = db.open_table("food_recommendations")
 
-    reranker = ColbertReranker(model_name="bert-base-uncased", column="search_data")
+    # reranker = ColbertReranker(model_name="bert-base-uncased", column="search_data")
 
     query_vector = func.generate_embeddings([query])[0]
     print(f"Query Vector Length: {len(query_vector)}")
@@ -18,7 +17,6 @@ def get_recommendations(query):
         table.search(query_type="hybrid")
         .vector(query_vector)
         .text(query)
-        .rerank(reranker)
         .limit(10)
         .to_pandas()
     )
