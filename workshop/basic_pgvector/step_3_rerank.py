@@ -7,7 +7,7 @@ def connect_db():
     return psycopg.connect("dbname=demo_pgvector user=user01 password=password01 host=localhost port=5432")
 
 def get_embedding(text):
-    response = openai.Client().embeddings.create(input=text, model="text-embedding-ada-002")
+    response = openai.Client().embeddings.create(input=text, model="text-embedding-3-small")
     return response.data[0].embedding
 
 def keyword_search(query):

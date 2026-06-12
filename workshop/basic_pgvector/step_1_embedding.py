@@ -1,7 +1,7 @@
 import openai
 import psycopg
 
-model_id = "text-embedding-ada-002"
+model_id = "text-embedding-3-small"
 
 # Connect to PostgreSQL database
 conn = psycopg.connect("dbname=demo_pgvector user=user01 password=password01 host=localhost port=5432")
